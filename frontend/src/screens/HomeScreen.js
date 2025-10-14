@@ -6,7 +6,6 @@ import Product from "../components/Product";
 import { Helmet } from "react-helmet-async";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
-// import data from '../data';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -27,7 +26,6 @@ function HomeScreen() {
     loading: true,
     error: "",
   });
-  // const [products, setProducts] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       dispatch({ type: "FETCH_REQUEST" });
@@ -38,7 +36,6 @@ function HomeScreen() {
         dispatch({ type: "FETCH_FAIL", payload: err.message });
       }
 
-      // setProducts(result.data);
     };
     fetchData();
   }, []);

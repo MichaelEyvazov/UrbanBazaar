@@ -89,7 +89,7 @@ export default function SearchScreen() {
       try {
         const { data } = await axios.get('/api/products/categories');
         dispatch({ type: 'CATS_SUCCESS', payload: data });
-      } catch (e) { /* ignore */ }
+      } catch (e) {  }
     };
     fetchCategories();
     fetchData();
@@ -97,7 +97,6 @@ export default function SearchScreen() {
 
   return (
     <div className="row">
-      {/* Sidebar filters */}
       <div className="col-md-3">
         <h5>Department</h5>
         <ul className="list-unstyled">
@@ -130,7 +129,6 @@ export default function SearchScreen() {
         </ul>
       </div>
 
-      {/* Results */}
       <div className="col-md-9">
         <div className="d-flex justify-content-between align-items-center mb-3">
           <div><strong>{countProducts}</strong> Results</div>
@@ -185,7 +183,6 @@ export default function SearchScreen() {
               ))}
             </div>
 
-            {/* Pagination */}
             <nav className="mt-3">
               <ul className="pagination">
                 {[...Array(pages).keys()].map((x) => (

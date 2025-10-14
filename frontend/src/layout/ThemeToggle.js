@@ -1,4 +1,3 @@
-// src/layout/ThemeToggle.jsx
 import React, { useContext, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import { Store } from '../Store';
@@ -6,8 +5,6 @@ import { Store } from '../Store';
 export default function ThemeToggle({ className = '' }) {
   const { state, dispatch } = useContext(Store);
   const { theme } = state;
-
-  // החלת ה-theme על ה-<body> כדי לאפשר CSS לפי data-theme
   useEffect(() => {
     document.body.setAttribute('data-theme', theme);
   }, [theme]);

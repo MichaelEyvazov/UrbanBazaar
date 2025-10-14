@@ -15,28 +15,23 @@ dotenv.config();
 
 const app = express();
 
-// JSON & forms
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// CORS
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
-// DB
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/urbanbazaar';
 mongoose
   .connect(MONGODB_URI, { dbName: process.env.DB_NAME || undefined })
   .then(() => console.log('connected to db'))
   .catch((err) => console.error(err.message));
 
-// Routers
 app.use('/api/seed', seedRouter);
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
 app.use('/api/orders', orderRouter);
 app.use('/api/upload', uploadRouter);
 
-// Static (optional)
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -45,12 +40,10 @@ app.get('/api/keys/paypal',(req,res)=>{
   res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
 })
 
-// 404
 app.use((req, res, next) => {
   res.status(404).send({ message: 'Route Not Found' });
 });
 
-// Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack || err.message || err);
   res.status(500).send({ message: err.message || 'Internal Server Error' });

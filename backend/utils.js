@@ -1,8 +1,6 @@
-// backend/utils.js
 import jwt from 'jsonwebtoken';
 import Brevo from '@getbrevo/brevo';
 
-/* -------------------------------- Base URL -------------------------------- */
 export const baseUrl = () =>
   process.env.BASE_URL
     ? process.env.BASE_URL
@@ -10,7 +8,6 @@ export const baseUrl = () =>
     ? 'http://localhost:3000'
     : 'https://yourdomain.com';
 
-/* ---------------------------------- JWT ----------------------------------- */
 export const generateToken = (user) =>
   jwt.sign(
     {
@@ -24,7 +21,6 @@ export const generateToken = (user) =>
     { expiresIn: '30d' }
   );
 
-/* ---------------------------- Auth Middlewares ----------------------------- */
 export const isAuth = (req, res, next) => {
   const { authorization } = req.headers || {};
   if (!authorization) return res.status(401).send({ message: 'No Token' });
@@ -48,9 +44,6 @@ export const isSeller = (req, res, next) =>
     ? next()
     : res.status(403).send({ message: 'Seller or Admin only' });
 
-/** Owner check helper:
- *  getOwnerId(req) should return the owner ObjectId (or Promise).
- */
 export const isAdminOrOwner =
   (getOwnerId) =>
   async (req, res, next) => {
@@ -65,14 +58,6 @@ export const isAdminOrOwner =
     }
   };
 
-/* ----------------------- Email via Brevo (Sendinblue) ---------------------- */
-/**
- * sendEmail({ to, subject, html })
- * ENV required:
- *  - BREVO_API_KEY
- *  - MAIL_FROM_EMAIL (verified sender in Brevo)  OR  MAIL_FROM
- *  - MAIL_FROM_NAME (optional, default 'UrbanBazaar')
- */
 export async function sendEmail({ to, subject, html }) {
   try {
     const apiKey = process.env.BREVO_API_KEY;
@@ -95,7 +80,6 @@ export async function sendEmail({ to, subject, html }) {
       return { skipped: true };
     }
 
-    // "Name <email@host>" -> { name, email } ; "email@host" -> { email }
     const normalizeAddress = (value) => {
       if (!value || typeof value !== 'string') return null;
       const m = value.match(/^(.*)<\s*(.+@.+)\s*>$/);
@@ -126,7 +110,6 @@ export async function sendEmail({ to, subject, html }) {
   }
 }
 
-/* -------------------------- Order email template -------------------------- */
 export const payOrderEmailTemplate = (order) => {
   return `<h1>Thanks for shopping with us</h1>
   <p>Hi ${order.user.name},</p>

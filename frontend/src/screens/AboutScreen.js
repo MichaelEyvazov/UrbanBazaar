@@ -17,7 +17,6 @@ export default function AboutScreen() {
         />
       </Helmet>
 
-      {/* Intro Card */}
       <Card className="ub-card mb-4">
         <Card.Body>
           <h1 className="mb-2">About UrbanBazaar</h1>
@@ -38,7 +37,7 @@ export default function AboutScreen() {
 
       <Row className="g-3">
         <Col md={8}>
-          {/* How It Works */}
+          
           <Card className="ub-card mb-3">
             <Card.Body>
               <h4 className="mb-3">How UrbanBazaar Works</h4>
@@ -63,7 +62,6 @@ export default function AboutScreen() {
             </Card.Body>
           </Card>
 
-          {/* System Integration */}
           <Card className="ub-card mb-3">
             <Card.Body>
               <h4 className="mb-3">System Architecture & Integration</h4>
@@ -113,7 +111,6 @@ export default function AboutScreen() {
             </Card.Body>
           </Card>
 
-          {/* Security & Accessibility */}
           <Card className="ub-card mb-3">
             <Card.Body>
               <h4 className="mb-3">Security & Accessibility</h4>
@@ -137,7 +134,6 @@ export default function AboutScreen() {
         </Col>
 
         <Col md={4}>
-          {/* Tech Stack */}
           <Card className="ub-card mb-3">
             <Card.Body>
               <h4 className="mb-3">Tech Stack</h4>
@@ -154,7 +150,6 @@ export default function AboutScreen() {
             </Card.Body>
           </Card>
 
-          {/* Contact Info */}
           <Card className="ub-card">
             <Card.Body>
               <h4 className="mb-3">Contact</h4>
@@ -172,11 +167,11 @@ export default function AboutScreen() {
                   GitHub:{' '}
                   <a
                     className="link-ub"
-                    href="https://github.com/yourusername/urbanbazaar"
+                    href="https://github.com/MichaelEyvazov/urbanbazaar"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    github.com/yourusername/urbanbazaar
+                    github.com/MichaelEyvazov/urbanbazaar
                   </a>
                 </li>
               </ul>

@@ -1,4 +1,3 @@
-// backend/models/productModel.js
 import mongoose from 'mongoose';
 
 const reviewSchema = new mongoose.Schema(

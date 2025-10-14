@@ -1,4 +1,3 @@
-// backend/routes/orderRoutes.js
 import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import Order from '../models/orderModel.js';
@@ -8,7 +7,6 @@ import { isAuth, isAdmin, isSeller, sendEmail, payOrderEmailTemplate } from '../
 
 const orderRouter = express.Router();
 
-/** ========== ADMIN: רשימת כל ההזמנות ========== */
 orderRouter.get(
   '/',
   isAuth,
@@ -19,7 +17,6 @@ orderRouter.get(
   })
 );
 
-/** ========== יצירת הזמנה – מוסיף seller לכל פריט ========== */
 orderRouter.post(
   '/',
   isAuth,
@@ -31,21 +28,19 @@ orderRouter.post(
 
     const orderItems = await Promise.all(
       items.map(async (x) => {
-        // תמיכה גם ב-x.product וגם ב-x._id (תלוי מהפרונט שולח)
         const productId = x.product || x._id;
         if (!productId) throw new Error('Missing product id in order item');
 
         const product = await Product.findById(productId).select('_id seller name');
         if (!product) throw new Error(`Product not found (${productId})`);
         if (!product.seller) {
-          // לא נמשיך אם למוצר אין seller—זה קריטי למודל "מוכרים"
           throw new Error(`Product "${product.name}" has no seller assigned`);
         }
 
         return {
           ...x,
-          product: product._id,     // רפרנס קשיח למוצר
-          seller: product.seller,   // שיוך המוכר לפריט ההזמנה
+          product: product._id,    
+          seller: product.seller,   
         };
       })
     );
@@ -66,7 +61,6 @@ orderRouter.post(
   })
 );
 
-/** ========== סיכומים לדשבורד (Admin) ========== */
 orderRouter.get(
   '/summary',
   isAuth,
@@ -99,7 +93,6 @@ orderRouter.get(
   })
 );
 
-/** ========== SELLER: הזמנות הכוללות פריטים של המוכר הזה ========== */
 orderRouter.get(
   '/seller',
   isAuth,
@@ -110,7 +103,6 @@ orderRouter.get(
   })
 );
 
-/** ========== MINE: הזמנות של המשתמש המחובר ========== */
 orderRouter.get(
   '/mine',
   isAuth,
@@ -120,7 +112,6 @@ orderRouter.get(
   })
 );
 
-/** ========== GET BY ID ========== */
 orderRouter.get(
   '/:id',
   isAuth,
@@ -131,7 +122,6 @@ orderRouter.get(
   })
 );
 
-/** ===== עזר: רק אדמין או Seller שבאמת יש לו פריט בהזמנה הזו ===== */
 const isAdminOrSellerOfOrder = expressAsyncHandler(async (req, res, next) => {
   if (req.user?.isAdmin) return next();
   if (!req.user?.isSeller) {
@@ -146,7 +136,6 @@ const isAdminOrSellerOfOrder = expressAsyncHandler(async (req, res, next) => {
   return ownsAnyItem ? next() : res.status(403).send({ message: 'Not allowed for this order' });
 });
 
-/** ========== סימון נמסר (Admin או Seller שבבעלותו פריט בהזמנה) ========== */
 orderRouter.put(
   '/:id/deliver',
   isAuth,
@@ -162,7 +151,6 @@ orderRouter.put(
   })
 );
 
-/** ========== סימון שולם + שליחת מייל (אם מוגדר) ========== */
 orderRouter.put(
   '/:id/pay',
   isAuth,
@@ -195,7 +183,6 @@ orderRouter.put(
   })
 );
 
-/** ========== מחיקת הזמנה (Admin בלבד) ========== */
 orderRouter.delete(
   '/:id',
   isAuth,

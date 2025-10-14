@@ -1,4 +1,3 @@
-// src/components/UserAvatarCircle.js
 import React from 'react';
 
 export default function UserAvatarCircle({ user, size = 38 }) {

@@ -86,7 +86,6 @@ export default function ProductScreen() {
         { rating, comment },
         { headers: { Authorization: `Bearer ${userInfo.token}` } }
       );
-      // עדכון מיידי של המוצר מקומית
       const newReviews = [...(product.reviews || []), data.review];
       const updated = {
         ...product,
@@ -117,7 +116,6 @@ export default function ProductScreen() {
         <title>{product.name}</title>
       </Helmet>
       <Row className="mt-3">
-        {/* תמונה בצד שמאל */}
         <Col md={5} className="mb-3">
           <img
             className="img-large"
@@ -127,7 +125,6 @@ export default function ProductScreen() {
           />
         </Col>
 
-        {/* פרטים + דירוג + ביקורות בצד ימין */}
         <Col md={7}>
           <ListGroup variant="flush">
             <ListGroup.Item>
@@ -166,7 +163,6 @@ export default function ProductScreen() {
             </ListGroup.Item>
           </ListGroup>
 
-          {/* כאן הביקורות מתחת לתיאור */}
           <div className="mt-4">
             <h4>Customer Reviews</h4>
             {(!product.reviews || product.reviews.length === 0) ? (
@@ -188,7 +184,6 @@ export default function ProductScreen() {
               </ListGroup>
             )}
 
-            {/* טופס להוספת ביקורת */}
             <h5>Write a Review</h5>
             {!userInfo ? (
               <MessageBox>

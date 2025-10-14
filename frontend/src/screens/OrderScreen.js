@@ -1,4 +1,3 @@
-// frontend/src/screens/OrderScreen.js
 import axios from 'axios';
 import React, { useContext, useEffect, useReducer } from 'react';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
@@ -70,7 +69,6 @@ export default function OrderScreen() {
 
   const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
 
-  // PayPal: יצירת הזמנה
   function createOrder(data, actions) {
     return actions.order
       .create({
@@ -83,17 +81,16 @@ export default function OrderScreen() {
       .then((orderID) => orderID);
   }
 
-  // PayPal: אישור תשלום
   function onApprove(data, actions) {
     return actions.order.capture().then(async function (details) {
       try {
         dispatch({ type: 'PAY_REQUEST' });
   
         const { data: result } = await axios.put(
-          `/api/orders/${order._id}/pay`, // ← גרשיים נדרשים כאן
+          `/api/orders/${order._id}/pay`, 
           details,
           {
-            headers: { authorization: `Bearer ${userInfo.token}` }, // ← וגם כאן
+            headers: { authorization: `Bearer ${userInfo.token}` }, 
           }
         );
   
@@ -106,7 +103,6 @@ export default function OrderScreen() {
     });
   }
   
-
   function onError(err) {
     toast.error(getError(err));
   }
@@ -122,9 +118,9 @@ export default function OrderScreen() {
         dispatch({ type: 'FETCH_REQUEST' });
     
         const { data } = await axios.get(
-          `/api/orders/${orderId}`, // ← חייב להיות עטוף ב־backticks (` `)
+          `/api/orders/${orderId}`, 
           {
-            headers: { authorization: `Bearer ${userInfo.token}` }, // ← גם כאן
+            headers: { authorization: `Bearer ${userInfo.token}` }, 
           }
         );
     
@@ -136,7 +132,6 @@ export default function OrderScreen() {
     
     const loadPaypalScript = async () => {
       try {
-        // אין צורך ב־Authorization ל־/api/keys/paypal
         const { data: clientId } = await axios.get('/api/keys/paypal');
         paypalDispatch({
           type: 'resetOptions',
@@ -163,10 +158,10 @@ export default function OrderScreen() {
       dispatch({ type: 'DELIVER_REQUEST' });
   
       const { data } = await axios.put(
-        `/api/orders/${order._id}/deliver`, // ← backticks מסביב ל־URL
+        `/api/orders/${order._id}/deliver`, 
         {},
         {
-          headers: { authorization: `Bearer ${userInfo.token}` }, // ← גם כאן
+          headers: { authorization: `Bearer ${userInfo.token}` }, 
         }
       );
   

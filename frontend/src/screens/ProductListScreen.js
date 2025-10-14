@@ -1,4 +1,3 @@
-// frontend/src/screens/ProductListScreen.js
 import React, { useContext, useEffect, useReducer, useState } from 'react';
 import axios from 'axios';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -61,10 +60,8 @@ export default function ProductListScreen({ mode = 'admin' }) {
     pages: 1,
   });
 
-  // Confirm modal state
   const [confirm, setConfirm] = useState({ show: false, body: '', busy: false, onConfirm: null });
 
-  // נתיב יצירה/עריכה בהתאם ל־mode
   const basePath = mode === 'seller' ? '/seller' : '/admin';
   const listPath = mode === 'seller' ? '/api/products/mine' : `/api/products/admin?page=${page}`;
   const editBasePath = `${basePath}/product`;
@@ -87,10 +84,8 @@ export default function ProductListScreen({ mode = 'admin' }) {
       dispatch({ type: 'DELETE_RESET' });
     }
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, userInfo, successDelete, mode]);
 
-  // יצירת מוצר – לא יוצרים בשרת! רק מנווטים לטופס יצירה
   const createHandler = () => {
     setConfirm({
       show: true,
@@ -104,7 +99,6 @@ export default function ProductListScreen({ mode = 'admin' }) {
     });
   };
 
-  // מחיקה
   const askDelete = (product) =>
     setConfirm({
       show: true,

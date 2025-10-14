@@ -57,14 +57,12 @@ userRouter.post(
   '/forget-password',
   expressAsyncHandler(async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
-    // לא לחשוף אם המשתמש לא קיים – נחזיר הודעה גורפת
     if (!user) {
       return res.status(200).send({ ok: true, message: 'If the email exists, a reset link was sent.' });
     }
 
-    // צור טוקן ושמור תוקף
     user.resetToken = crypto.randomBytes(32).toString('hex');
-    user.resetTokenExpires = Date.now() + 1000 * 60 * 30; // 30 דקות
+    user.resetTokenExpires = Date.now() + 1000 * 60 * 30; 
     await user.save();
 
     const resetUrl = `${baseUrl()}/reset-password?token=${user.resetToken}&email=${encodeURIComponent(user.email)}`;
@@ -73,7 +71,6 @@ userRouter.post(
 
     const mail = await sendEmail({ to: user.email, subject: 'Reset your password', html });
 
-    // תשובה ברורה לקליינט
     if (mail?.ok || mail?.response?.statusCode === 201) {
       return res.send({ ok: true, message: 'Email sent. Check your inbox (or spam).' });
     }

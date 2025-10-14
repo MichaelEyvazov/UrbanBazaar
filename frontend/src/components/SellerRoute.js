@@ -12,10 +12,8 @@ export default function SellerRoute({ children }) {
 
   if (!userInfo) return <Navigate to="/signin" />;
 
-  // אם זה מוכר — תן גישה כרגיל
   if (userInfo.isSeller) return children;
 
-  // אם זה אדמין — הצג הודעה יפה והצע מעבר ל-Admin Orders
   if (userInfo.isAdmin) {
     return (
       <div className="container small-container mt-5">
@@ -42,7 +40,6 @@ export default function SellerRoute({ children }) {
     );
   }
 
-  // משתמש רגיל — חסימה
   return (
     <div className="container small-container mt-5">
       <Alert variant="warning">

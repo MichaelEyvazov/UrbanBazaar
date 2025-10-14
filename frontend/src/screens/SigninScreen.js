@@ -39,7 +39,6 @@ export default function SigninScreen() {
       localStorage.setItem('userInfo', JSON.stringify(data));
       navigate(redirect || '/');
     } catch (err) {
-      // מניעת לולאת רנדרים
       ctxDispatch({ type: 'USER_SIGNOUT' });
       localStorage.removeItem('userInfo');
       if (!toast.isActive(toastId)) {
@@ -49,7 +48,6 @@ export default function SigninScreen() {
   };
 
   useEffect(() => {
-    // מניעת לולאה — לא ננווט שוב לדף זה
     if (userInfo && redirect !== '/signin' && !window.location.pathname.includes('/signin')) {
       navigate(redirect);
     }

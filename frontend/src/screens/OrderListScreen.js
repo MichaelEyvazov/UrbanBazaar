@@ -51,10 +51,8 @@ export default function OrderListScreen({ mode = 'admin' }) {
     successDelete: false,
   });
 
-  // Confirm modal
   const [confirm, setConfirm] = useState({ show: false, onYes: null, body: '' });
 
-  // Filter state (חייב להיות בתוך הקומפוננטה!)
   const [filterStatus, setFilterStatus] = useState('all');
 
   const endpoint = mode === 'seller' ? '/api/orders/seller' : '/api/orders';
@@ -77,7 +75,6 @@ export default function OrderListScreen({ mode = 'admin' }) {
     } else {
       fetchData();
     }
-    // לכלל: לעגן לתלות בטוקן כדי לשמח את ESLint
   }, [endpoint, userInfo?.token, successDelete]);
 
   const deleteHandler = async (order) => {
@@ -117,10 +114,8 @@ export default function OrderListScreen({ mode = 'admin' }) {
       </Helmet>
       <h1 className="mb-3">{mode === 'seller' ? 'My Orders' : 'Orders'}</h1>
 
-      {/* Overlay for long operations */}
       <LoadingOverlay show={loadingDelete} text="Working..." />
 
-      {/* Confirm modal */}
       <ConfirmModal
         show={confirm.show}
         body={confirm.body}

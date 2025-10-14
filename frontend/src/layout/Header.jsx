@@ -20,7 +20,6 @@ export default function Header({ onToggleSidebar }) {
         localStorage.removeItem('userInfo');
         localStorage.removeItem('shippingAddress');
         localStorage.removeItem('paymentMethod');
-        // לא מאפסים cart בכוונה – יש לך לוגיקה אחרת לניקוי לפי משתמש
         window.location.href = '/signin';
     };
 

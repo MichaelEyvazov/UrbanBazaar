@@ -1,4 +1,3 @@
-// backend/routes/productRoutes.js
 import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import Product from '../models/productModel.js';
@@ -6,13 +5,11 @@ import { isAuth, isAdmin, isAdminOrOwner } from '../utils.js';
 
 const productRouter = express.Router();
 
-// גם Seller וגם Admin יכולים למכור
 const canSell = (req, res, next) => {
   if (req.user?.isSeller || req.user?.isAdmin) return next();
   return res.status(403).send({ message: 'Seller or Admin only' });
 };
 
-/** LIST – ציבורי */
 productRouter.get(
   '/',
   expressAsyncHandler(async (req, res) => {
@@ -21,7 +18,6 @@ productRouter.get(
   })
 );
 
-/** CREATE – Seller/Admin */
 productRouter.post(
   '/',
   isAuth,
@@ -30,7 +26,6 @@ productRouter.post(
     try {
       const ownerId = req.user._id;
 
-      // קלט מהקליינט – אם לא שלח, נשתמש בדיפולטים
       const {
         name = `sample name ${Date.now()}`,
         slug: incomingSlug,
@@ -42,7 +37,6 @@ productRouter.post(
         description = 'sample description',
       } = req.body || {};
 
-      // לבנות סלאג ייחודי
       const baseSlug = (incomingSlug || name || 'sample-name')
         .toString()
         .trim()
@@ -72,7 +66,6 @@ productRouter.post(
       return res.status(201).send({ message: 'Product Created', product });
     } catch (err) {
       console.error('[PRODUCT CREATE] failed:', err?.message || err);
-      // אם זו שגיאת ייחודיות (duplicate key) – הודעה ברורה
       if (err?.code === 11000) {
         return res.status(400).send({ message: 'Slug already exists, please change product name' });
       }
@@ -80,31 +73,7 @@ productRouter.post(
     }
   })
 );
-// productRouter.post(
-//   '/',
-//   isAuth,
-//   canSell,
-//   expressAsyncHandler(async (req, res) => {
-//     const ownerId = req.user._id;
-//     const newProduct = new Product({
-//       name: req.body.name || 'sample name ' + Date.now(),
-//       slug: req.body.slug || 'sample-name-' + Date.now(),
-//       image: req.body.image || '/images/p1.jpg',
-//       price: req.body.price ?? 0,
-//       category: req.body.category || 'sample category',
-//       brand: req.body.brand || 'sample brand',
-//       countInStock: req.body.countInStock ?? 0,
-//       rating: 0,
-//       numReviews: 0,
-//       description: req.body.description || 'sample description',
-//       seller: ownerId,
-//     });
-//     const product = await newProduct.save();
-//     res.status(201).send({ message: 'Product Created', product });
-//   })
-// );
 
-/** MINE – מוצרים של המוכר */
 productRouter.get(
   '/mine',
   isAuth,
@@ -118,7 +87,6 @@ productRouter.get(
   })
 );
 
-/** UPDATE – Admin או בעל המוצר */
 productRouter.put(
   '/:id',
   isAuth,
@@ -158,7 +126,6 @@ productRouter.put(
   })
 );
 
-/** DELETE – Admin או בעל המוצר */
 productRouter.delete(
   '/:id',
   isAuth,
@@ -177,7 +144,6 @@ productRouter.delete(
   })
 );
 
-/** ADD REVIEW – מחובר בלבד */
 productRouter.post(
   '/:id/reviews',
   isAuth,
@@ -217,7 +183,6 @@ productRouter.post(
 
 const PAGE_SIZE = 3;
 
-/** ADMIN LIST – עם עימוד */
 productRouter.get(
   '/admin',
   isAuth,
@@ -235,7 +200,6 @@ productRouter.get(
   })
 );
 
-/** SEARCH – ציבורי */
 productRouter.get(
   '/search',
   expressAsyncHandler(async (req, res) => {
@@ -299,7 +263,6 @@ productRouter.get(
   })
 );
 
-/** קטגוריות – ציבורי */
 productRouter.get(
   '/categories',
   expressAsyncHandler(async (req, res) => {
@@ -308,7 +271,6 @@ productRouter.get(
   })
 );
 
-/** GET BY SLUG – ציבורי */
 productRouter.get(
   '/slug/:slug',
   expressAsyncHandler(async (req, res) => {
@@ -318,7 +280,6 @@ productRouter.get(
   })
 );
 
-/** GET BY ID – ציבורי */
 productRouter.get(
   '/:id',
   expressAsyncHandler(async (req, res) => {
