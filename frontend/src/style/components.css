@@ -1,0 +1,21 @@
+.btn-primary,
+.btn-outline-primary {
+  background-color: #f0c040;
+  color: #000000;
+}
+.btn.text-bold {
+  font-weight: bold;
+  background-color: #eee;
+}
+
+.input-error {
+  border: 1px solid #ff4d4f !important;
+  box-shadow: 0 0 5px rgba(255, 77, 79, 0.6);
+}
+
+.card {
+  border-radius: 14px;
+}
+.table th, .table td {
+  vertical-align: middle;
+}

@@ -4,6 +4,7 @@ import Layout from './layout/Layout';
 import AppRoutes from './routes/AppRoutes';
 import { useContext, useEffect } from 'react';
 import { Store } from './Store';
+import './styles/index.js';
 
 export default function App() {
   const { state } = useContext(Store);
