@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import ProtectedRoute from '../components/ProtectedRoute';
 import AdminRoute from '../components/AdminRoute';
 import SellerRoute from '../components/SellerRoute';
-
+import AboutScreen from './screens/AboutScreen';
 import HomeScreen from '../screens/HomeScreen';
 import ProductScreen from '../screens/ProductScreen';
 import CartScreen from '../screens/CartScreen';
@@ -38,6 +38,7 @@ export default function AppRoutes() {
             <Route path="/signup" element={<SignupScreen />} />
             <Route path="/forget-password" element={<ForgetPasswordScreen />} />
             <Route path="/reset-password/:token" element={<ResetPasswordScreen />} />
+            <Route path="/about" element={<AboutScreen />} />
 
             {/* Protected */}
             <Route

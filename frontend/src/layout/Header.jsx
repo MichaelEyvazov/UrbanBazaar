@@ -31,7 +31,9 @@ export default function Header({ onToggleSidebar }) {
                     <Button variant="dark" onClick={onToggleSidebar}>
                         <i className="fas fa-bars" />
                     </Button>
-
+                    <Link className="nav-link" to="/about">
+                        About
+                    </Link>
                     <LinkContainer to="/">
                         <Navbar.Brand>UrbanBazaar</Navbar.Brand>
                     </LinkContainer>
@@ -55,7 +57,7 @@ export default function Header({ onToggleSidebar }) {
                         )}
 
                         <Nav className="ms-auto">
-                          <ThemeToggle />
+                            <ThemeToggle />
                             <Link to="/cart" className="nav-link">
                                 Cart{' '}
                                 {cart.cartItems.length > 0 && (
