@@ -1,0 +1,26 @@
+.full-box {
+    height: 100vh;
+    max-width: initial;
+  }
+  .full-box header,
+  .full-box footer {
+    display: none;
+  }
+  .map-input-box {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0.5rem auto;
+    width: 25rem;
+    height: 3rem;
+    display: flex;
+  }
+  .map-input-box input {
+    border-radius: 1rem 0 0 1rem;
+    border-right: 0;
+  }
+  .map-input-box button {
+    border-radius: 0 1rem 1rem 0;
+    border-left: 0;
+  }
+  
