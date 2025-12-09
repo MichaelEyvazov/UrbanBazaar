@@ -101,6 +101,7 @@ This is caused by a broken HOST environment variable on Windows.
 ```powershell
 Remove-Item Env:HOST -ErrorAction SilentlyContinue
 npm start
+```
 ---
 
 ## 🔑 Environment Variables (.env)
