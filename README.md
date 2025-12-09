@@ -88,6 +88,19 @@ npm start
 ```
 Then open 👉 [http://localhost:3000](http://localhost:3000)
 
+
+## ⚠ Known Issue (Windows)
+If frontend does not start and shows:
+
+Attempting to bind to HOST environment variable  
+Invalid options object → allowedHosts[0]
+
+This is caused by a broken HOST environment variable on Windows.
+
+### Quick fix:
+```powershell
+Remove-Item Env:HOST -ErrorAction SilentlyContinue
+npm start
 ---
 
 ## 🔑 Environment Variables (.env)
