@@ -28,24 +28,6 @@ export default function MapScreen() {
   const placeRef = useRef(null);
   const markerRef = useRef(null);
 
-  const getUserCurrentLocation = () => {
-    if (!navigator.geolocation) {
-      toast.error('Geolocation is not supported by this browser');
-      return;
-    }
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const lat = position.coords.latitude;
-        const lng = position.coords.longitude;
-        setCenter({ lat, lng });
-        setLocation({ lat, lng });
-      },
-      () => {
-        toast.info('Using default location');
-      },
-      { enableHighAccuracy: true, timeout: 8000 }
-    );
-  };
 
   useEffect(() => {
     const fetchKey = async () => {
@@ -68,7 +50,7 @@ export default function MapScreen() {
 
     fetchKey();
     ctxDispatch({ type: 'SET_FULLBOX_ON' });
-  }, [userInfo?.token]);
+  }, [userInfo?.token, ctxDispatch]);
 
   const onLoad = (map) => {
     mapRef.current = map;

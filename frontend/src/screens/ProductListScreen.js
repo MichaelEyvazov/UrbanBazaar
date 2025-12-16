@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useReducer, useState } from 'react';
+import React, { useContext, useEffect, useReducer, useState, useCallback} from 'react';
 import axios from 'axios';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
@@ -66,7 +66,7 @@ export default function ProductListScreen({ mode = 'admin' }) {
   const listPath = mode === 'seller' ? '/api/products/mine' : `/api/products/admin?page=${page}`;
   const editBasePath = `${basePath}/product`;
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       dispatch({ type: 'FETCH_REQUEST' });
       const { data } = await axios.get(listPath, {
@@ -76,15 +76,15 @@ export default function ProductListScreen({ mode = 'admin' }) {
     } catch (err) {
       dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
     }
-  };
+  }, [listPath, userInfo?.token]);
 
   useEffect(() => {
-    if (!userInfo) return;
-    if (successDelete) {
-      dispatch({ type: 'DELETE_RESET' });
-    }
-    fetchData();
-  }, [page, userInfo, successDelete, mode]);
+  if (!userInfo) return;
+  if (successDelete) {
+    dispatch({ type: 'DELETE_RESET' });
+  }
+  fetchData();
+}, [userInfo, successDelete, fetchData]);
 
   const createHandler = () => {
     setConfirm({
