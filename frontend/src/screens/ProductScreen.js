@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -112,9 +112,7 @@ export default function ProductScreen() {
     <MessageBox>Product not found</MessageBox>
   ) : (
     <div>
-      <Helmet>
-        <title>{product.name}</title>
-      </Helmet>
+    <SEO title={product.name} />
       <Row className="mt-3">
         <Col md={5} className="mb-3">
           <img

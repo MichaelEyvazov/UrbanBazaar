@@ -1,7 +1,8 @@
 {
-  "name": "amazona",
+  "name": "urbanbazaar",
   "version": "1.0.0",
-  "description": "# Lessons",
+  "description": "UrbanBazaar – Full Stack MERN Marketplace (Final Project)",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "build": "cd backend && npm install  && cd ../frontend && npm install && npm run build",
@@ -10,12 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/basir/mern-amazona.git"
+    "url": "https://github.com/MichaelEyvazov/UrbanBazaar.git"
   },
-  "author": "",
+  "author": "Michael Eyvazov",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/basir/mern-amazona/issues"
+    "url": "https://github.com/MichaelEyvazov/UrbanBazaar.git/issues"
   },
-  "homepage": "https://github.com/basir/mern-amazona#readme"
+  "homepage": "https://github.com/MichaelEyvazov/UrbanBazaar.git#readme"
 }

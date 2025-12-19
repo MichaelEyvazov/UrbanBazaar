@@ -36,7 +36,7 @@ It was developed as a **final project for the HackerU Full‑Stack Web Developer
 | Payments | PayPal REST API |
 | File Uploads | Multer (with Cloudinary option) |
 | Styling | Bootstrap + custom CSS |
-| Others | dotenv, CORS, Helmet |
+| Others | dotenv, CORS |
 
 ---
 
@@ -163,7 +163,7 @@ Creates:
 - Passwords hashed with bcrypt
 - Protected routes with authentication middleware
 - `.env` excluded from version control
-- CORS and Helmet middleware for basic protection
+- CORS middleware for basic protection
 
 ---
 

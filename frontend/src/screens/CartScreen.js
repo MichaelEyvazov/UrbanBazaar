@@ -1,6 +1,6 @@
 import React,{ useContext } from 'react';
 import { Store } from '../Store';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import MessageBox from '../components/MessageBox';
@@ -38,9 +38,7 @@ export default function CartScreen() {
 
   return (
     <div>
-      <Helmet>
-        <title>Shopping Cart</title>
-      </Helmet>
+    <SEO title="Shopping Cart" />
       <h1>Shopping Cart</h1>
       <Row>
         <Col md={8}>

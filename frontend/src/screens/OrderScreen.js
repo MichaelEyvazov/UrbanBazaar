@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useReducer } from 'react';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -180,9 +180,7 @@ export default function OrderScreen() {
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
     <div>
-  <Helmet>
-    <title>Order {orderId}</title>
-  </Helmet>
+    <SEO title={`Order ${orderId}`} />
 
   <h1 className="my-3">Order {orderId}</h1>
 

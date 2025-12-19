@@ -1,5 +1,5 @@
 import React, { useContext, useReducer, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Store } from '../Store';
@@ -66,9 +66,7 @@ export default function ProfileScreen() {
 
   return (
     <div className="container small-container">
-      <Helmet>
-        <title>User Profile</title>
-      </Helmet>
+    <SEO title="User Profile" />
       <h1 className="my-3">User Profile</h1>
       <form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="name">

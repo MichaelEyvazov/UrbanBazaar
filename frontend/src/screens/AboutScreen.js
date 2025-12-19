@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -9,13 +9,10 @@ import ListGroup from 'react-bootstrap/ListGroup';
 export default function AboutScreen() {
   return (
     <div className="my-3">
-      <Helmet>
-        <title>About • UrbanBazaar</title>
-        <meta
-          name="description"
-          content="About UrbanBazaar – an e-commerce marketplace platform built with React, Node.js, and MongoDB."
-        />
-      </Helmet>
+    <SEO
+    title="About • UrbanBazaar"
+    description="About UrbanBazaar – an e-commerce marketplace platform built with React, Node.js, and MongoDB."
+  />
 
       <Card className="ub-card mb-4">
         <Card.Body>

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
@@ -60,9 +60,7 @@ export default function ShippingAddressScreen() {
 
   return (
     <div>
-      <Helmet>
-        <title>Shipping Address</title>
-      </Helmet>
+    <SEO title="Shipping Address" />
 
       <CheckoutSteps step1 step2></CheckoutSteps>
       <div className="container small-container">

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useReducer } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import LoadingBox from '../components/LoadingBox';
@@ -51,9 +51,7 @@ export default function OrderHistoryScreen() {
   }, [userInfo]);
   return (
     <div>
-      <Helmet>
-        <title>Order History</title>
-      </Helmet>
+    <SEO title="Order History" />
 
       <h1>Order History</h1>
       {loading ? (
