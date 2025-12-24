@@ -194,3 +194,10 @@ Creates:
 **Michael Eyvazov**  
 Final Project – Full‑Stack Web Developer Course (2025)  
 © 2025 Michael Eyvazov | Developed as part of HackerU Full‑Stack Program
+
+## SEO & Page Titles
+
+Page titles are managed centrally via React Router based on route configuration.
+This approach replaces `react-helmet` to avoid dependency issues with newer React versions.
+
+Meta tags such as description and keywords are handled separately via a lightweight `SEO` component.
