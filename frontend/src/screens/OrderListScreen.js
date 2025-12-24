@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useContext, useEffect, useReducer, useState } from 'react';
 import { toast } from 'react-toastify';
 import Button from 'react-bootstrap/Button';
-import SEO from '../components/SEO';
 import { useNavigate } from 'react-router-dom';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
@@ -109,7 +108,6 @@ export default function OrderListScreen({ mode = 'admin' }) {
 
   return (
     <div>
-    <SEO title={mode === 'seller' ? 'My Orders' : 'Orders'} />
       <h1 className="mb-3">{mode === 'seller' ? 'My Orders' : 'Orders'}</h1>
 
       <LoadingOverlay show={loadingDelete} text="Working..." />

@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useReducer } from 'react';
-import SEO from '../components/SEO';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import LoadingBox from '../components/LoadingBox';
@@ -51,8 +50,6 @@ export default function OrderHistoryScreen() {
   }, [userInfo]);
   return (
     <div>
-    <SEO title="Order History" />
-
       <h1>Order History</h1>
       {loading ? (
         <LoadingBox></LoadingBox>

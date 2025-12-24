@@ -10,7 +10,6 @@ export default function AboutScreen() {
   return (
     <div className="my-3">
     <SEO
-    title="About • UrbanBazaar"
     description="About UrbanBazaar – an e-commerce marketplace platform built with React, Node.js, and MongoDB."
   />
 

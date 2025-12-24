@@ -7,7 +7,6 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import SEO from '../components/SEO';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { Store } from '../Store';
@@ -167,7 +166,6 @@ export default function ProductEditScreen(props) {
 
   return (
     <div>
-    <SEO title={isCreate ? 'Create Product' : 'Edit Product'} />
       <h1 className="my-3">{isCreate ? 'Create Product' : 'Edit Product'}</h1>
 
       {loading ? (

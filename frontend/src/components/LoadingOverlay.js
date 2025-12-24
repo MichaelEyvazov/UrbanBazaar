@@ -1,7 +1,8 @@
-import React from 'react';
+import '../styles/loading.css';
 
-export default function LoadingOverlay({ show = false, text = 'Loading...' }) {
+export default function LoadingOverlay({ show = false, text }) {
   if (!show) return null;
+
   return (
     <div
       style={{
@@ -9,23 +10,28 @@ export default function LoadingOverlay({ show = false, text = 'Loading...' }) {
         inset: 0,
         background: 'rgba(0,0,0,0.35)',
         display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         zIndex: 1050,
-        backdropFilter: 'blur(1px)',
+        backdropFilter: 'blur(2px)',
       }}
     >
-      <div
-        style={{
-          background: 'white',
-          padding: '16px 20px',
-          borderRadius: 12,
-          boxShadow: '0 10px 30px rgba(0,0,0,.2)',
-          fontWeight: 600,
-        }}
-      >
-        {text}
+      <div className="loader" aria-label="Loading">
+        Loading...
       </div>
+
+      {text && (
+        <div
+          style={{
+            marginTop: 16,
+            color: 'white',
+            fontWeight: 600,
+          }}
+        >
+          {text}
+        </div>
+      )}
     </div>
   );
 }

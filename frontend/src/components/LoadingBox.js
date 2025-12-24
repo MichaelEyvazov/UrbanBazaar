@@ -1,10 +1,17 @@
-import Spinner from 'react-bootstrap/Spinner';
-import '../styles/loading.css'; 
+import '../styles/loading.css';
 
 export default function LoadingBox() {
   return (
-    <Spinner animation="border" role="status">
-      <span className="loader">Loading...</span>
-    </Spinner>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        padding: '40px 0',
+      }}
+    >
+      <div className="loader" aria-label="Loading">
+        Loading...
+      </div>
+    </div>
   );
 }

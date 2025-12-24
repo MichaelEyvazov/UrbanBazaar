@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import SEO from '../components/SEO';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
@@ -60,8 +59,6 @@ export default function ShippingAddressScreen() {
 
   return (
     <div>
-    <SEO title="Shipping Address" />
-
       <CheckoutSteps step1 step2></CheckoutSteps>
       <div className="container small-container">
         <h1 className="my-3">Shipping Address</h1>

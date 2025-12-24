@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import SEO from '../components/SEO';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Store } from '../Store';
@@ -45,7 +44,6 @@ export default function ResetPasswordScreen() {
 
   return (
     <Container className="small-container">
-    <SEO title="Reset Password" />
       <h1 className="my-3">Reset Password</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="password">

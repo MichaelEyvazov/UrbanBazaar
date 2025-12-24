@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useReducer } from 'react';
 import Button from 'react-bootstrap/Button';
-import SEO from '../components/SEO';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import LoadingBox from '../components/LoadingBox';
@@ -89,7 +88,6 @@ export default function UserListScreen() {
   };
   return (
     <div>
-    <SEO title="Users" />
       <h1>Users</h1>
 
       {loadingDelete && <LoadingBox></LoadingBox>}
