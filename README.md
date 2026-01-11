@@ -1,4 +1,4 @@
-# 🏙️ UrbanBazaar – Full‑Stack Marketplace (MERN)
+# 🏙️ UrbanBazaar – Full‑Stack Marketplace (MERN) 
 
 UrbanBazaar is a complete **multi‑vendor e‑commerce platform** built with the **MERN stack** – MongoDB, Express.js, React.js, and Node.js.  
 It was developed as a **final project for the HackerU Full‑Stack Web Developer course**, demonstrating a production‑grade marketplace system with multiple user roles, payments, and full CRUD management.
