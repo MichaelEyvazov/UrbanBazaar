@@ -1,0 +1,23 @@
+Submission Instructions
+=======================
+
+To run the UrbanBazaar project:
+
+1. Ensure Docker Desktop is installed and running.
+   (Download: https://www.docker.com/products/docker-desktop)
+
+2. Right-click the "run_project.ps1" file and select "Run with PowerShell".
+   
+   OR, open PowerShell in this folder and run:
+   ./run_project.ps1
+
+The script will:
+- Check for Docker.
+- Build the application images locally (ensuring compatibility with your machine).
+- Start the Backend, Frontend, and Database.
+- Seed demo data automatically.
+- Open the application in your browser.
+
+Access:
+Frontend: http://localhost:3000
+Backend:  http://localhost:4000

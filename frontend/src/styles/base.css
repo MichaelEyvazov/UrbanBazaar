@@ -1,0 +1,14 @@
+body {
+    background-color: #fafafa;
+  }
+  .site-container {
+    min-height: 100vh;
+    transition: 0.4s;
+  }
+  main {
+    flex: 1;
+  }
+  .text-bold {
+    font-weight: bold;
+  }
+  

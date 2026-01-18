@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo
+    container_name: urbanbazaar_mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build: ./backend
+    container_name: urbanbazaar_backend
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      - MONGODB_URI=mongodb://mongodb:27017/urbanbazaar
+      - JWT_SECRET=somethingsecret
+      - PAYPAL_CLIENT_ID=sb
+      # Add other keys here if needed (Cloudinary, Brevo, etc.)
+      # CLOUDINARY_CLOUD_NAME=...
+    depends_on:
+      - mongodb
+    volumes:
+      - ./backend/uploads:/app/uploads
+
+  frontend:
+    build: ./frontend
+    container_name: urbanbazaar_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:

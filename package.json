@@ -1,0 +1,22 @@
+{
+  "name": "urbanbazaar",
+  "version": "1.0.0",
+  "description": "UrbanBazaar – Full Stack MERN Marketplace (Final Project)",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "build": "cd backend && npm install  && cd ../frontend && npm install && npm run build",
+    "start": "node backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MichaelEyvazov/UrbanBazaar.git"
+  },
+  "author": "Michael Eyvazov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MichaelEyvazov/UrbanBazaar.git/issues"
+  },
+  "homepage": "https://github.com/MichaelEyvazov/UrbanBazaar.git#readme"
+}
